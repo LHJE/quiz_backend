@@ -9,7 +9,7 @@ class QuizController < ApplicationController
   end
 
   def create
-    render json: Quiz.create(params["person"])
+    render json: Quiz.create(params["quiz"])
   end
 
   def delete

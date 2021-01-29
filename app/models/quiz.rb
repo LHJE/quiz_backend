@@ -6,6 +6,10 @@ class Quiz
       return results.each do |result|
         {
           "id" => result["id"].to_i,
+          "question" => result["question"],
+          "answer" => result["answer"],
+          "answer_char" => result["answer_char"],
+          "point_value" => result["point_value"]
 
         }
       end
@@ -15,21 +19,27 @@ class Quiz
     results = DB.exec("SELECT * FROM quiz WHERE id=#{id};")
     return {
       "id" => results.first["id"].to_i,
-
+      "question" => result["question"],
+      "answer" => result["answer"],
+      "answer_char" => result["answer_char"],
+      "point_value" => result["point_value"]
     }
   end
 
   def self.create(opts)
     results = DB.exec(
         <<-SQL
-            INSERT INTO quiz (question, answer)
-            VALUES ( '#{opts["question"]}', #{opts["answer"]} )
-            RETURNING id, question, answer;
+            INSERT INTO quiz (question, answer, answer_char, point_value)
+            VALUES ( '#{opts["question"]}', '#{opts["answer"]}', '#{opts["answer_char"]}', #{opts["point_value"]} )
+            RETURNING id, question, answer, answer_char, point_value;
         SQL
     )
     return {
         "id" => results.first["id"].to_i,
-
+        "question" => result["question"],
+        "answer" => result["answer"],
+        "answer_char" => result["answer_char"],
+        "point_value" => result["point_value"]
     }
   end
 
@@ -42,14 +52,17 @@ class Quiz
     results = DB.exec(
         <<-SQL
             UPDATE people
-            SET name='#{opts["question"]}', age=#{opts["answer"]}
+            SET question='#{opts["question"]}', answer='#{opts["answer"]}', answer_char='#{opts["answer_char"]}', point_value=#{opts["point_value"]}
             WHERE id=#{id}
-            RETURNING id, question, answer;
+            RETURNING id, question, answer, answer_char, point_value;
         SQL
     )
     return {
         "id" => results.first["id"].to_i,
-        
+        "question" => result["question"],
+        "answer" => result["answer"],
+        "answer_char" => result["answer_char"],
+        "point_value" => result["point_value"]
     }
   end
 end

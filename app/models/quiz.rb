@@ -9,7 +9,7 @@ class Quiz
           "question" => result["question"],
           "answer" => result["answer"],
           "answer_char" => result["answer_char"],
-          "point_value" => result["point_value"]
+          "point_value" => result["point_value"].to_i
 
         }
       end
@@ -22,7 +22,7 @@ class Quiz
       "question" => results["question"],
       "answer" => results["answer"],
       "answer_char" => results["answer_char"],
-      "point_value" => results["point_value"]
+      "point_value" => results["point_value"].to_i
     }
   end
 
@@ -39,7 +39,7 @@ class Quiz
         "question" => results["question"],
         "answer" => results["answer"],
         "answer_char" => results["answer_char"],
-        "point_value" => results["point_value"]
+        "point_value" => results["point_value"].to_i
     }
   end
 
@@ -62,7 +62,7 @@ class Quiz
         "question" => results["question"],
         "answer" => results["answer"],
         "answer_char" => results["answer_char"],
-        "point_value" => results["point_value"]
+        "point_value" => results["point_value"].to_i
     }
   end
 end

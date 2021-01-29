@@ -36,10 +36,10 @@ class Quiz
     )
     return {
         "id" => results.first["id"].to_i,
-        "question" => results["question"],
-        "answer" => results["answer"],
-        "answer_char" => results["answer_char"],
-        "point_value" => results["point_value"].to_i
+        "question" => results.first["question"],
+        "answer" => results.first["answer"],
+        "answer_char" => results.first["answer_char"],
+        "point_value" => results.first["point_value"].to_i
     }
   end
 
@@ -51,7 +51,7 @@ class Quiz
   def self.update(id, opts)
     results = DB.exec(
         <<-SQL
-            UPDATE people
+            UPDATE quiz
             SET question='#{opts["question"]}', answer='#{opts["answer"]}', answer_char='#{opts["answer_char"]}', point_value=#{opts["point_value"]}
             WHERE id=#{id}
             RETURNING id, question, answer, answer_char, point_value;
@@ -59,10 +59,10 @@ class Quiz
     )
     return {
         "id" => results.first["id"].to_i,
-        "question" => results["question"],
-        "answer" => results["answer"],
-        "answer_char" => results["answer_char"],
-        "point_value" => results["point_value"].to_i
+        "question" => results.first["question"],
+        "answer" => results.first["answer"],
+        "answer_char" => results.first["answer_char"],
+        "point_value" => results.first["point_value"].to_i
     }
   end
 end

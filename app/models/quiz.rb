@@ -19,10 +19,10 @@ class Quiz
     results = DB.exec("SELECT * FROM quiz WHERE id=#{id};")
     return {
       "id" => results.first["id"].to_i,
-      "question" => result["question"],
-      "answer" => result["answer"],
-      "answer_char" => result["answer_char"],
-      "point_value" => result["point_value"]
+      "question" => results["question"],
+      "answer" => results["answer"],
+      "answer_char" => results["answer_char"],
+      "point_value" => results["point_value"]
     }
   end
 
@@ -36,10 +36,10 @@ class Quiz
     )
     return {
         "id" => results.first["id"].to_i,
-        "question" => result["question"],
-        "answer" => result["answer"],
-        "answer_char" => result["answer_char"],
-        "point_value" => result["point_value"]
+        "question" => results["question"],
+        "answer" => results["answer"],
+        "answer_char" => results["answer_char"],
+        "point_value" => results["point_value"]
     }
   end
 
@@ -59,10 +59,10 @@ class Quiz
     )
     return {
         "id" => results.first["id"].to_i,
-        "question" => result["question"],
-        "answer" => result["answer"],
-        "answer_char" => result["answer_char"],
-        "point_value" => result["point_value"]
+        "question" => results["question"],
+        "answer" => results["answer"],
+        "answer_char" => results["answer_char"],
+        "point_value" => results["point_value"]
     }
   end
 end

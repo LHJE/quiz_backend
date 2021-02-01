@@ -2,7 +2,7 @@ class Quiz
   DB = PG.connect({:host=>"localhost", :port => 5432, :dbname => 'quiz_backend_development'})
 
   def self.all
-      results = DB.exec("SELECT * FROM quiz;")
+      results = DB.exec("SELECT * FROM quiz ORDER BY random() LIMIT 1;")
       return results.each do |result|
         {
           "id" => result["id"].to_i,
@@ -19,10 +19,10 @@ class Quiz
     results = DB.exec("SELECT * FROM quiz WHERE id=#{id};")
     return {
       "id" => results.first["id"].to_i,
-      "question" => results["question"],
-      "answer" => results["answer"],
-      "answer_char" => results["answer_char"],
-      "point_value" => results["point_value"].to_i
+      "question" => results.first["question"],
+      "answer" => results.first["answer"],
+      "answer_char" => results.first["answer_char"],
+      "point_value" => results.first["point_value"].to_i
     }
   end
 

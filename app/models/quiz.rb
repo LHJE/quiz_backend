@@ -1,5 +1,9 @@
 class Quiz
-  DB = PG.connect({:host=>"localhost", :port => 5432, :dbname => 'quiz_backend_development'})
+  if ENV["DATABASE_URL"]
+  PG.connect(ENV['DATABASE_URL'])
+elsif
+  DB = PG.connect({:host => "localhost", :port => 5432, :dbname => 'quiz_backend_development'})
+end
 
   def self.all
       results = DB.exec("SELECT * FROM quiz ORDER BY random() LIMIT 1;")

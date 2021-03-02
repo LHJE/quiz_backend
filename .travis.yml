@@ -1,0 +1,10 @@
+language: ruby
+rbenv:
+- 2.5.3
+script:
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  app: https://git.heroku.com/hidden-plains-04040.git
+  run: rails db:migrate
